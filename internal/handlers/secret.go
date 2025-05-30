@@ -133,7 +133,7 @@ func (p *HandlerProvider) UpdateSecretHandler(c *gin.Context) {
 		return
 	}
 
-	secretId, err := strconv.ParseInt(c.Param("id"), 10, 64)
+	secretID, err := strconv.ParseInt(c.Param("id"), 10, 64)
 	if err != nil {
 		sendErrorResponse(c, p.Sugar, http.StatusBadRequest, err)
 		return
@@ -203,7 +203,7 @@ func (p *HandlerProvider) UpdateSecretHandler(c *gin.Context) {
 		secret.Data = encryptedData
 	}
 
-	id, err := p.Repository.UpdateSecret(userID, secretId, secret, withData)
+	id, err := p.Repository.UpdateSecret(userID, secretID, secret, withData)
 	if err != nil {
 		sendErrorResponse(c, p.Sugar, http.StatusInternalServerError, err)
 		return
@@ -224,13 +224,13 @@ func (p *HandlerProvider) RemoveSecretHandler(c *gin.Context) {
 		return
 	}
 
-	secretId, err := strconv.ParseInt(c.Param("id"), 10, 64)
+	secretID, err := strconv.ParseInt(c.Param("id"), 10, 64)
 	if err != nil {
 		sendErrorResponse(c, p.Sugar, http.StatusBadRequest, err)
 		return
 	}
 
-	id, err := p.Repository.RemoveSecret(userID, secretId)
+	id, err := p.Repository.RemoveSecret(userID, secretID)
 	if err != nil {
 		sendErrorResponse(c, p.Sugar, http.StatusInternalServerError, err)
 		return
