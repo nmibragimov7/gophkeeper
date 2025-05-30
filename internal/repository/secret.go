@@ -69,14 +69,14 @@ func (p *RepositoryProvider) GetSecrets(userID int64, meta string) ([]entity.Sec
 	return records, nil
 }
 
-func (p *RepositoryProvider) UpdateSecret(userID int64, secretId int64, secret *entity.Secret, withData bool) (int64, error) {
+func (p *RepositoryProvider) UpdateSecret(userID int64, secretID int64, secret *entity.Secret, withData bool) (int64, error) {
 	if withData {
 		err := p.DB.QueryRow(UpdateWithDataSecret,
 			&secret.Type,
 			&secret.Data,
 			&secret.Meta,
 			userID,
-			secretId,
+			secretID,
 		).Scan(&secret.ID)
 		if err != nil {
 			return 0, fmt.Errorf("failed to update record: %w", err)
@@ -86,7 +86,7 @@ func (p *RepositoryProvider) UpdateSecret(userID int64, secretId int64, secret *
 			&secret.Type,
 			&secret.Meta,
 			userID,
-			secretId,
+			secretID,
 		).Scan(&secret.ID)
 		if err != nil {
 			return 0, fmt.Errorf("failed to update record: %w", err)
@@ -96,8 +96,8 @@ func (p *RepositoryProvider) UpdateSecret(userID int64, secretId int64, secret *
 	return secret.ID, nil
 }
 
-func (p *RepositoryProvider) RemoveSecret(userID int64, secretId int64) (int64, error) {
-	result, err := p.DB.Exec(RemoveSecret, userID, secretId)
+func (p *RepositoryProvider) RemoveSecret(userID int64, secretID int64) (int64, error) {
+	result, err := p.DB.Exec(RemoveSecret, userID, secretID)
 	if err != nil {
 		return 0, fmt.Errorf("failed to execute delete: %w", err)
 	}
@@ -111,5 +111,5 @@ func (p *RepositoryProvider) RemoveSecret(userID int64, secretId int64) (int64, 
 		return 0, fmt.Errorf("no rows deleted")
 	}
 
-	return secretId, nil
+	return secretID, nil
 }
