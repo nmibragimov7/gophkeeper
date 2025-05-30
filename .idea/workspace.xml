@@ -7,10 +7,10 @@
     <list default="true" id="b8763f5c-fb55-41f3-87ef-18707239bb74" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.golangci.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/golint.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/golint.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/handlers/secret.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/handlers/secret.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/repository/secret.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/repository/secret.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
