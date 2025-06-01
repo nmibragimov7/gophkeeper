@@ -1,0 +1,48 @@
+version: "3.8"
+
+services:
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - SERVER_ADDRESS=:8080
+      - SECRET_KEY=jwt_secret
+      - MASTER_KEY=12345678901234567890123456789012
+      - DATABASE_URI=host=postgres user=postgres password=admin dbname=gophkeeper sslmode=disable
+    depends_on:
+      - postgres
+    networks:
+      - gophkeeper-network
+
+  postgres:
+    image: postgres:17-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=gophkeeper
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - gophkeeper-network
+
+  client:
+    build:
+      context: ./client
+    ports:
+      - "5173:5173"
+    working_dir: /app
+    command: ["npm", "run", "dev", "--", "--host"]
+    depends_on:
+      - app
+    networks:
+      - gophkeeper-network
+
+volumes:
+  postgres_data:
+
+networks:
+  gophkeeper-network:
+    driver: bridge
