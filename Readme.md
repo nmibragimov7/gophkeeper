@@ -21,7 +21,7 @@ Gophkeeper — сервис для хранения и управления се
 SERVER_ADDRESS=:8080
 SECRET_KEY=jwt_secret
 MASTER_KEY=12345678901234567890123456789012
-DATABASE_URI=host=localhost user=postgres password=admin dbname=gophkeeper sslmode=disable
+DATABASE_URI=host=postgres user=postgres password=admin dbname=gophkeeper sslmode=disable
 ```
 
 1. Убедись, что установлен Docker и docker-compose
@@ -30,7 +30,7 @@ DATABASE_URI=host=localhost user=postgres password=admin dbname=gophkeeper sslmo
     docker-compose up --build
     ```
 3. Фронт доступен на [http://localhost:5173](http://localhost:5173)
-4. Бэкенд (API) на [http://localhost:8080](http://localhost:8080)
+4. Бэкенд (API) на [http://app:8080](http://localhost:8080)
 
 ## Как запустить фронт отдельно
 
@@ -47,7 +47,7 @@ npm run dev
 export SERVER_ADDRESS=:8080
 export SECRET_KEY=jwt_secret
 export MASTER_KEY=12345678901234567890123456789012
-export DATABASE_URI=host=localhost user=postgres password=admin dbname=gophkeeper sslmode=disable
+export DATABASE_URI=host=postgres user=postgres password=admin dbname=gophkeeper sslmode=disable
 
 go run ./cmd/server
 ```
