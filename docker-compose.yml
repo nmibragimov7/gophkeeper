@@ -9,7 +9,7 @@ services:
       - SERVER_ADDRESS=:8080
       - SECRET_KEY=jwt_secret
       - MASTER_KEY=12345678901234567890123456789012
-      - DATABASE_URI=host=localhost user=postgres password=admin dbname=gophkeeper sslmode=disable
+      - DATABASE_URI=host=postgres user=postgres password=admin dbname=gophkeeper sslmode=disable
     depends_on:
       - postgres
     networks:
